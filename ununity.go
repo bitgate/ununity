@@ -16,6 +16,7 @@ func main() {
 
 	app.Name = "Ununity"
 	app.Action = unpack
+	app.Description = "Extracts .unitypackage files into their normalized directory structure"
 	app.Flags = []cli.Flag{
 		&cli.StringFlag{
 			Name: "output",
@@ -75,7 +76,6 @@ func unpack(c *cli.Context) error {
 		return fmt.Errorf("cannot create output directory: %s", err.Error())
 	}
 
-	// Map with files for which name wasn't
 	pendingRenames := make(map[string]string) // hash => full path
 	pendingMetaRenames := make(map[string]string) // hash => full path
 	nameLookup := make(map[string]string) // hash => name
